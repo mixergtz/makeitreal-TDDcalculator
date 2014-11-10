@@ -26,5 +26,17 @@ describe Calculator do
     Calculator.evaluar("10+(2*4)-10/2").should == 13
   end
 
+  it "should handle wrong arguments" do
+      expect { calculadora.sumar("dfdsaf") }.to raise_error(ArgumentError)
+      expect { calculadora.restar("dfdsaf") }.to raise_error(ArgumentError)
+      expect { calculadora.multiplicar("dfdsaf") }.to raise_error(ArgumentError)
+      expect { calculadora.dividir("dfdsaf") }.to raise_error(ArgumentError)
+      expect { calculadora.dividir(1,0) }.to raise_error(ArgumentError)
+      expect { Calculator.evaluar("dfadfasdf") }.to raise_error(ArgumentError)
+      expect { Calculator.evaluar("1+++***3") }.to raise_error(ArgumentError)
+      expect { Calculator.evaluar("((((*))))+22+/3") }.to raise_error(ArgumentError)
+      expect { Calculator.evaluar(" 10 + ( 2 * (4 ) - 10 / 2") }.to raise_error(ArgumentError)
+  end
+
 
 end
